@@ -53,7 +53,7 @@ def fit_func(hromosoma):
             return reward
 
 
-ga = SGA(task='maximize', pop_size=25, cross_prob=0.8, mut_prob=0.2, elitism=True)
+ga = SGA(task='maximize', pop_size=50, cross_prob=0.8, mut_prob=0.2, elitism=True)
 ga.set_selector_type(tournament_selection)
 ga.set_scaler_type(sigma_trunc_scaling)
 ga.set_crossover_type(two_point_crossover)
@@ -63,7 +63,7 @@ ga.set_fitness(fit_func)
 ga.initialize(space=env.action_space, steps=10)
 # ga.run(n_iter=500, verbose=True)
 
-for i in range(100):
+for i in range(50):
     ga.step()
     print(f'ga.score = {ga.best_individual().score}')
     logger.info(f'{i}: {ga.best_individual().score}')
